@@ -16,21 +16,18 @@ Some helpful notes for Machine Learning System Design Interview preparation, whi
 
 ## Overview:
 
-1. Framework for solving MLSD cases
-2. Detailed notes on some concepts
-3. List of cases with notes on solving (e.g. recsys for e-commerce, automoderation, face identification)
-
-
+1. [Framework for solving MLSD cases](#framework-for-solving-mlsd-cases)
+2. [Detailed notes on some concepts](#detailed-notes-on-some-concepts)
 
 # Framework for solving MLSD cases
 
 
-1. Problem definition
-2. Data
-3. Evaluation
-4. Features
-5. Model
-6. Experimentation
+1. [Problem definition](#problem-definition)
+2. [Data](#data)
+3. [Evaluation](#evaluation)
+4. [Features](#features)
+5. [Model](#model)
+6. [Further actions](#further-actions)
 
 
 ## Overall tips
@@ -73,7 +70,10 @@ Define proxy machine learning metric for the business goal.
    2. Choose interpretable and sensitive to task Metric. Think what errors will be most harmful, FP or FN for classificaction, over or underpredicting for regression.
    3. Mention baseline Non-ml-solution. You will compare your machine learning models with this baseline.
 2. Online evaluation.
-   1. A/B test.
+   1. Online-offline gap
+   2. Online comparing.
+      1. A/B randomised test
+      2. A/A test.
 
 
 ## Features
@@ -90,20 +90,16 @@ Define proxy machine learning metric for the business goal.
 3. What is the loss function?
 
 
-## Online evaluation and Experimentation
+## Further actions
 
-1. Online-offline gap
-2. Online
-   1. A/B randomised test
-   2. A/A test
-
+1. Deployment
+2. Experiments
+3. Monitoring & Continual Learning
 
 
 
-# Points to dive deeper.
 
-## Experimentation and Online learning.
-......
+# Detailed notes on some concepts
 
 ## Deployment
 
@@ -200,15 +196,10 @@ Sampling - sampling from all possible real-world data to create training data
 1. Offline evaluation
    1. How to split the data?
       1. classic K-FOLD (tr+val) + ts
-      2. If time sensitive data. Data sorted by time [........]:
+      2. If time sensitive data. Data sorted by time:
          1. split by time  
-            1. [train val test]
          2. splitting by time + margin 
-            1. [train..val..test]
          3. preq splitting 
-            1. [...train.val.test] 
-            2. [..train.val..test]   
-            3. [.train.val...test]   
       3. If user/product sensitive data.
          1. split by user/product to prevent data leakage
       4. If cold start problem.
