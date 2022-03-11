@@ -21,9 +21,9 @@ Some helpful notes for Machine Learning System Design Interview preparation, whi
 3. List of cases with notes on solving (e.g. recsys for e-commerce, automoderation, face identification)
 
 
---- 
-## Framework for solving MLSD cases
---- 
+
+# Framework for solving MLSD cases
+
 
 1. Problem definition
 2. Data
@@ -42,9 +42,9 @@ After listening the conditions of the case, ask the interviewer clarifying quest
 Examples of questions:
 1. Could you give an example of succcesful use case of this system?
 
-----
+
 ## Problem definition. 
---- 
+
 Define proxy machine learning metric for the business goal. 
 *ML metric is a proxy metric, so think about overall business goal, when improving baseline. (For example, users won't be happy if our new model will decrease UX speed)*
    1. Define the business goal. 
@@ -53,9 +53,9 @@ Define proxy machine learning metric for the business goal.
    4. Define requirements on speed, memory.
       1. Online or batch predicting
       2. Cloud or edge computations
---- 
+
 ## Data 
---- 
+
 1. Data source and data type
    1. Where the data comes from? Is it in the same format or should we transform and join it?
    2. One sample of data. What is X(features) and what is Y(labels)?
@@ -63,9 +63,9 @@ Define proxy machine learning metric for the business goal.
 2. Sampling. Sampling strategy to get subset from all possible real-world data to create training and test data.
 3. Data recency and Distribution drift. 
 
---- 
+
 ## Evaluation
---- 
+
 1. Offline evaluation. 
    1. Data split
       1. Random split or should split by date, users, products to prevent data leakage?
@@ -75,23 +75,23 @@ Define proxy machine learning metric for the business goal.
 2. Online evaluation.
    1. A/B test.
 
---- 
+
 ## Features
---- 
+
 1. What type of data we have? Can we encode it?
 2. Feature engineering, data preprocessing.
 3. Data augmentation.
 
---- 
+
 ## Model
---- 
+
 1. Pick the model.
 2. Pros and cons of the model.
 3. What is the loss function?
 
---- 
+
 ## Online evaluation and Experimentation
---- 
+
 1. Online-offline gap
 2. Online
    1. A/B randomised test
@@ -99,14 +99,14 @@ Define proxy machine learning metric for the business goal.
 
 
 
----- 
+
 # Points to dive deeper.
---- 
-### Experimentation and Online learning.
---- 
---- 
-### Deployment
---- 
+
+## Experimentation and Online learning.
+......
+
+## Deployment
+
 1. Batch prediction vs Online prediction
 2. Model compression
     1. Low-rank factorisation. Mobile net optimizations.
@@ -116,9 +116,9 @@ Define proxy machine learning metric for the business goal.
     5. Special inference formats. (pb, onnx, torchscript)
 3. Edge / Cloud computing
 
---- 
-### Monitoring & Continual Learning
---- 
+
+## Monitoring & Continual Learning
+
 1. Monitoring -> Continual Learning
     1. Detect distribution shift -> adapt with CL
     2. Check if more frerquent will boost
@@ -131,9 +131,9 @@ Define proxy machine learning metric for the business goal.
         4. Shadow test - log prediction from new, then study
 3. Internal test on coworkers. But it is a sanity check
 
---- 
-### Data
---- 
+
+## Data
+
 1. Data source
     1. User generated - user data
     2. Sys generated - internal data
@@ -151,9 +151,9 @@ Define proxy machine learning metric for the business goal.
     3. Structured/UnStructured 
 4. Data storage engines and processing
 5. ETL /ELT
---- 
-### Sampling
---- 
+
+## Sampling
+
 Sampling - sampling from all possible real-world data to create training data
 1. Non-Probability Sampling - selective bias - OK for init
     1. Convenience - what is available 
@@ -171,9 +171,9 @@ Sampling - sampling from all possible real-world data to create training data
     3. Correct probability for each sample in reservoir.
 
 
---- 
-### Labeling
---- 
+
+## Labeling
+
 1. Label types
     1. Hand label
        1. Measure of consent - flies kappa
@@ -194,9 +194,9 @@ Sampling - sampling from all possible real-world data to create training data
            1. Balanced loss
            2. Focal loss - hard examples > weight CE*(1-pt)^hamma
 
---- 
-### Evaluation
---- 
+
+## Evaluation
+
 1. Offline evaluation
    1. How to split the data?
       1. classic K-FOLD (tr+val) + ts
@@ -238,25 +238,25 @@ Sampling - sampling from all possible real-world data to create training data
         2. Error analysis
         3. Slice finder algos. Generate with beam search than check
 
---- 
-### Feature engineering
---- 
+
+## Feature engineering
+
 1. Handling missing values
 2. Scaling - e.g. log for skew
 3. Discretization
 4. Encoding. Hashing trick
 5. Feature crossing, e.g. recsys to add nonlinear
 6. Pos embeddings, e.g. pos enc in bert
---- 
-### Data Augmentation
---- 
+
+## Data Augmentation
+
 1. Simple Label-preserving - synonyms 
 2. Perturbation/Adverserial - add hard samples - noise
 3. Data synth - add new samples (use diff model)
 
---- 
-### Online learning 
---- 
+
+## Online learning 
+
 1. Online-offline gap
 2. Online
     1. A/B randomised test
