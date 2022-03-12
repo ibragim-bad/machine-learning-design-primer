@@ -13,6 +13,8 @@ Some helpful notes for Machine Learning System Design Interview preparation, whi
 
 [CS 329S: Machine Learning Systems Design, Stanford, Winter 2022](https://stanford-cs329s.github.io/)
 
+[ML Systems Design Interview Guide](http://patrickhalina.com/posts/ml-systems-design-interview-guide/)
+
 
 ## Overview:
 
@@ -35,7 +37,15 @@ Some helpful notes for Machine Learning System Design Interview preparation, whi
 + Tell pros and cons of different solutions
 + Start with simple solution as baseline
 
-After listening the conditions of the case, ask the interviewer clarifying questions. Repeat the main points to make sure you understand everything correctly. During the interview, ask the questions by stating the assumptions. 
+After listening the conditions of the case, ask the interviewer clarifying questions. Repeat the main points to make sure you understand everything correctly. During the interview, ask the questions and state your assumptions. 
+
+**Understand requirements:**
++ Users/samples number
++ Peak numbers of requests
++ Batch or online predictions
++ Edge or server computations
+
+
 Examples of questions:
 1. Could you give an example of succcesful use case of this system?
 
@@ -46,30 +56,28 @@ Define proxy machine learning metric for the business goal.
 *ML metric is a proxy metric, so think about overall business goal, when improving baseline. (For example, users won't be happy if our new model will decrease UX speed)*
    1. Define the business goal. 
    2. Define ML task type. Classification/regression/other
-   3. Split the task into subtasks. Exxample: maximize users engagement while minimizing the spread of extreme views and misinformation. 
-   4. Define requirements on speed, memory.
-      1. Online or batch predicting
-      2. Cloud or edge computations
+   3. Split the task into subtasks. Example: maximize users engagement while minimizing the spread of extreme views and misinformation. 
 
 ## Data 
 
-1. Data source and data type
+1. [ Data source and data type](#data-source)
    1. Where the data comes from? Is it in the same format or should we transform and join it?
    2. One sample of data. What is X(features) and what is Y(labels)?
-   3. Are the labels known? Is there Natural labeling? Should we label some data.
-2. Sampling. Sampling strategy to get subset from all possible real-world data to create training and test data.
-3. Data recency and Distribution drift. 
+2. [Labeling](#Labeling)
+   1. Are the labels known? Is there Natural labeling? Should we label some data.
+3. [Sampling](#sampling) 
+4. Data recency and Distribution drift. 
 
 
 ## Evaluation
 
-1. Offline evaluation. 
+1. [Offline evaluation](#evaluation) 
    1. Data split
       1. Random split or should split by date, users, products to prevent data leakage?
       2. *Could you drop the information from some samples - Cold start*
-   2. Choose interpretable and sensitive to task Metric. Think what errors will be most harmful, FP or FN for classificaction, over or underpredicting for regression.
+   2. Choose Metric, that is interpretable and sensitive to task. Think what errors will be most harmful, FP or FN for classificaction, over or underpredicting for regression.
    3. Mention baseline Non-ml-solution. You will compare your machine learning models with this baseline.
-2. Online evaluation.
+2. [Online evaluation](#online-evaluation)
    1. Online-offline gap
    2. Online comparing.
       1. A/B randomised test
@@ -79,7 +87,7 @@ Define proxy machine learning metric for the business goal.
 ## Features
 
 1. What type of data we have? Can we encode it?
-2. Feature engineering, data preprocessing.
+2. [Feature representation, data preprocessing.](#feature-representation)
 3. Data augmentation.
 
 
@@ -87,17 +95,18 @@ Define proxy machine learning metric for the business goal.
 
 1. Pick the model.
 2. Pros and cons of the model.
-3. What is the loss function?
-
+3. Architecture overview in a glance.
+   1. Linear model
+   2. GBDT
+   3. Embeddings + KNN
+   4. Neural networks
+4. What loss function you will use?
 
 ## Further actions
 
-1. Deployment
+1. [Deployment](#deployment)
 2. Experiments
-3. Monitoring & Continual Learning
-
-
-
+3. [Monitoring & Continual Learning](#monitoring-and-continual-learning)
 
 # Detailed notes on some concepts
 
@@ -113,7 +122,7 @@ Define proxy machine learning metric for the business goal.
 3. Edge / Cloud computing
 
 
-## Monitoring & Continual Learning
+## Monitoring and Continual Learning
 
 1. Monitoring -> Continual Learning
     1. Detect distribution shift -> adapt with CL
@@ -128,7 +137,7 @@ Define proxy machine learning metric for the business goal.
 3. Internal test on coworkers. But it is a sanity check
 
 
-## Data
+## Data source
 
 1. Data source
     1. User generated - user data
@@ -166,6 +175,7 @@ Sampling - sampling from all possible real-world data to create training data
     2. For new elem generate random (1, n), if <k: replace in k
     3. Correct probability for each sample in reservoir.
 
+Training sample selection. For example positive, negative sampling in metric learning.
 
 
 ## Labeling
@@ -190,6 +200,29 @@ Sampling - sampling from all possible real-world data to create training data
            1. Balanced loss
            2. Focal loss - hard examples > weight CE*(1-pt)^hamma
 
+## Feature Representation
+1. Overall.
+   1. Handling missing values
+   2. Feature crossing 
+2. Numeric values.
+   + demeaning
+   + scaling - e.g. log for skew
+   + remove outliers
+   + bining
+   + quantization
+3. Categorical values.
+   + One-hot
+   + Hashing trick
+   + Embedding
+4. Text.
+   + Embedding. Bert-like-models.
+   + Fasttext average. (fast)
+5. Complex.
+   + Concatenation. Example: Product title + category + other features
+   + Encode -> Attention. Example: User history
+
+
+
 
 ## Evaluation
 
@@ -211,14 +244,13 @@ Sampling - sampling from all possible real-world data to create training data
       2. Sensitive to task. By metric we can say in the context of task what model is better.
    4. Calibration on test.
    5. Slicing. Slice by some features to find model failures.
-2. Online evaluation. 
-3. Baseline evaluation. 
+2. Baseline evaluation. 
     1. Random label
     2. Majority label 
     3. Simple heuristic (if contains swear word -> toxic message)
     4. Human label
     5. Existing solution
-4. Evaluation methods 
+3. Evaluation methods 
     1. Perturbation test - Check the model on noisy samples.
     2. Invariance (Fairness)
     3. Directional expectations - sanity check
@@ -246,7 +278,7 @@ Sampling - sampling from all possible real-world data to create training data
 3. Data synth - add new samples (use diff model)
 
 
-## Online learning 
+## Online evaluation 
 
 1. Online-offline gap
 2. Online
@@ -261,5 +293,3 @@ Sampling - sampling from all possible real-world data to create training data
     7. Have backup plan
     8. Calibration average prediction = average gt prediction 
         1. Misc on train - under, test - overfit, online - on/offline gap
-
-
