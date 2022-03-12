@@ -20,6 +20,7 @@ Some helpful notes for Machine Learning System Design Interview preparation, whi
 
 1. [Framework for solving MLSD cases](#framework-for-solving-mlsd-cases)
 2. [Detailed notes on some concepts](#detailed-notes-on-some-concepts)
+3. [Cases](#cases.md)
 
 # Framework for solving MLSD cases
 
@@ -61,23 +62,24 @@ Define proxy machine learning metric for the business goal.
 ## Data 
 
 1. [ Data source and data type](#data-source)
-   1. Where the data comes from? Is it in the same format or should we transform and join it?
-   2. One sample of data. What is X(features) and what is Y(labels)?
-2. [Labeling](#Labeling)
-   1. Are the labels known? Is there Natural labeling? Should we label some data.
-3. [Sampling](#sampling) 
-4. Data recency and Distribution drift. 
+    + Where the data comes from? Is it in the same format or should we transform and join it?
+    + One sample of data. What is X(features) and what is Y(labels)?
+1. [Labeling](#Labeling)
+    + Are the labels known? Is there Natural labeling? Should we label some data.
+2. [Sampling](#sampling) 
+3. Data recency and Distribution drift. 
 
 
 ## Evaluation
 
 1. [Offline evaluation](#evaluation) 
    1. Data split
-      1. Random split or should split by date, users, products to prevent data leakage?
-      2. *Could you drop the information from some samples - Cold start*
-   2. Choose Metric, that is interpretable and sensitive to task. Think what errors will be most harmful, FP or FN for classificaction, over or underpredicting for regression.
-   3. Mention baseline Non-ml-solution. You will compare your machine learning models with this baseline.
-2. [Online evaluation](#online-evaluation)
+        + Random split or should split by date, users, products to prevent data leakage?
+   2. Metric.
+        + Choose etric, that is interpretable and sensitive to task. Think what errors will be most harmful, FP or FN for classificaction, over or underpredicting for regression.
+   1. Baseline.
+       + Mention baseline Non-ml-solution. You will compare your machine learning models with this baseline.
+1. [Online evaluation](#online-evaluation)
    1. Online-offline gap
    2. Online comparing.
       1. A/B randomised test
@@ -96,11 +98,11 @@ Define proxy machine learning metric for the business goal.
 1. Pick the model.
 2. Pros and cons of the model.
 3. Architecture overview in a glance.
-   1. Linear model
-   2. GBDT
-   3. Embeddings + KNN
-   4. Neural networks
-4. What loss function you will use?
+    + Linear model
+    + GBDT
+    + Embeddings + KNN
+    + Neural networks
+1. What loss function you will use?
 
 ## Further actions
 
@@ -114,11 +116,11 @@ Define proxy machine learning metric for the business goal.
 
 1. Batch prediction vs Online prediction
 2. Model compression
-    1. Low-rank factorisation. Mobile net optimizations.
-    2. Knowledge distillation
-    3. Pruning 
-    4. Quantization
-    5. Special inference formats. (pb, onnx, torchscript)
+   + Low-rank factorisation. Mobile net optimizations.
+   + Pruning 
+   + Knowledge distillation
+   + Quantization
+   + Special inference formats. (pb, onnx, torchscript)
 3. Edge / Cloud computing
 
 
@@ -130,45 +132,45 @@ Define proxy machine learning metric for the business goal.
 2. Eval
     1. Offline - sanity check
     2. Online
-        1. Canary - two models old and new, slowly route traffic
-        2. A/B - test
-        3. Interleaved experiments - preds from 2 models are mixed
-        4. Shadow test - log prediction from new, then study
+        + Canary - two models old and new, slowly route traffic
+        + A/B - test
+        + Interleaved experiments - preds from 2 models are mixed
+        + Shadow test - log prediction from new, then study
 3. Internal test on coworkers. But it is a sanity check
 
 
 ## Data source
 
 1. Data source
-    1. User generated - user data
-    2. Sys generated - internal data
-    3. 3party data, collect from all, mention GDPR
-2. Data formats
+    + User generated - user data
+    + Sys generated - internal data
+    + 3party data, collect from all, mention GDPR
+1. Data formats
     1. Row or column-major
         1. Row - fast writes
         2. Column - fast column reads
     2. Txt/binary
-3. Data models
+2. Data models
     1. Relational
     2. Nosql - not only sql
-        1. Doc
+        1. Document
         2. Graph
     3. Structured/UnStructured 
-4. Data storage engines and processing
-5. ETL /ELT
+3. Data storage engines and processing
+4. ETL /ELT
 
 ## Sampling
 
-Sampling - sampling from all possible real-world data to create training data
+**Sampling - sampling from all possible real-world data to create training data**
 1. Non-Probability Sampling - selective bias - OK for init
-    1. Convenience - what is available 
-    2. Snowball - Example: collect friend of friends on social network.
-    3. Judgement - expert decision.
-    4. Quota - Example: 30 from each age group
+    + Convenience - what is available 
+    + Snowball - Example: collect friend of friends on social network.
+    + Judgement - expert decision.
+    + Quota - Example: 30 from each age group
 2. Probability Sampling
-   1. Simple random sampling
-   2. Stratified
-   3. Weighted 
+    + Simple random sampling
+    + Stratified
+    + Weighted 
 3. Importance sampling (RL)
 4. Reservoir sampling - sampling from stream.
     1. K samples in res, N - len of current stream
