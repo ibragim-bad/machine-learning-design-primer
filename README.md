@@ -22,6 +22,14 @@ Some helpful notes for Machine Learning System Design Interview preparation, whi
 2. [Detailed notes on some concepts](#detailed-notes-on-some-concepts)
 3. [Cases](#cases.md)
 
+## Contributing
+
+Feel free to submit pull requests to help:
+
++ Fix errors
++ Improve sections
++ Add new sections and cases
+
 # Framework for solving MLSD cases
 
 

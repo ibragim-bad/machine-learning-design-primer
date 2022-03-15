@@ -32,13 +32,15 @@ List of cases for machine learning system design interview.
 + Bot detection
 + Fraud detection
 
-### recommendation system: 
+### Recommendation system: 
++ Feed-based system (Instagram)
 + Artists to follow on Spotify  
 + Restaurants in Google maps  
 + Items for a cart in Amazon  
   
-### E-commerce
+### Other
 + Churn prediction  
 + Uplift modelling
 + Price optimization
++ Ad Click Prediction
 + Products matching
