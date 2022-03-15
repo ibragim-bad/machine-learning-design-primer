@@ -1,33 +1,44 @@
 # MLSD cases
 
-search engine  
-predictive typing  
-photo editing  
-Face authentication  
-machine translation  
-personal assistants  
-Smart security cameras  
-at-home health monitoring system   
+List of cases for machine learning system design interview.
 
-recommendation system  
-* Recommend artists to follow on Spotify  
-* Recommend restaurants to in Google maps  
-* Recommend add on items for a cart in Amazon  
+### Information retrieval
++ Search engine (Google, Bing)
++ Similar images finder  
+
+### Predictive typing
++ Next word prediction (on phone)
++ Autocorrect (on phone)
+
+### Text 
++ Online grammar checker (Grammarly)
++ Machine translation service (Google translate, Deepl)
+
+### Photo editing
++ Instagram/Snapchat filters
+
+### Authentication
++ Face authentication (Face-ID) 
+
+### Virtual Assistants
++ Voice assistant for smart-home (Alexa)
++ ChatBot for Customer Support
+
+### Content moderation
++ Innapropriate/Toxic/Spam comments detection (Facebook comments)
++ Sensitive photo content checker (Instagram adult content)
+
+### InfoSec
++ Bot detection
++ Fraud detection
+
+### recommendation system: 
++ Artists to follow on Spotify  
++ Restaurants in Google maps  
++ Items for a cart in Amazon  
   
-Detecting fraud  
-Churn prediction  
-Matching  
-Next click prediction   
-Price optimization  
-Forecast customer demand   
-Reducing customer acquisition costs??  
-Uplift  
-Automated support ticket classification  
-brand monitoring  
-detect skin cancer   
-diagnose diabetes  
-
-Speech recognition  
-
-QA
-ODQA
+### E-commerce
++ Churn prediction  
++ Uplift modelling
++ Price optimization
++ Products matching
