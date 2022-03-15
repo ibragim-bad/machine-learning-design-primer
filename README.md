@@ -82,7 +82,7 @@ Define proxy machine learning metric for the business goal.
 
 ## Evaluation
 
-1. [Offline evaluation](#evaluation) 
+1. [Offline evaluation](#offline-evaluation) 
    1. Data split
         + Random split or should split by date, users, products to prevent data leakage?
    2. Metric.
