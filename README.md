@@ -236,7 +236,7 @@ Training sample selection. For example positive, negative sampling in metric lea
 
 
 
-## Evaluation
+## Offline evaluation
 
 1. Offline evaluation
    1. How to split the data?
