@@ -191,7 +191,7 @@ Training sample selection. For example positive, negative sampling in metric lea
 
 1. Label types
     1. Hand label
-       1. Measure of consent - flies kappa
+       1. Measure of consent - [Fleiss' kappa](https://en.wikipedia.org/wiki/Fleiss%27_kappa)
        2. Data lineage - preserve the source of data, if its labelling worsen model
     2. Natural label e.g. - like/dislike, click etc
 2. Handling the lack of hand labels
