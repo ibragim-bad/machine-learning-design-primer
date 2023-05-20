@@ -19,6 +19,10 @@ Some helpful notes for Machine Learning System Design Interview preparation, whi
 
 [Yandex MLSD interview guide](https://youtu.be/krDfPEYVVvk)
 
+["Machine Learning System Design" book](https://github.com/arsenyinfo/ml_system_design)
+
+["Designing Machine Learning Systems" book](https://github.com/chiphuyen/dmls-book)
+
 ## Overview:
 
 1. [Framework for solving MLSD cases](#framework-for-solving-mlsd-cases)
@@ -41,7 +45,8 @@ Feel free to submit pull requests to help:
 3. [Evaluation](#evaluation)
 4. [Features](#features)
 5. [Model](#model)
-6. [Further actions](#further-actions)
+6. [Error analysis](#error-analysis)
+7. [Further actions](#further-actions)
 
 
 ## Overall tips
@@ -109,6 +114,14 @@ Define proxy machine learning metric for the business goal.
     + Embeddings + KNN
     + Neural networks
 1. What loss function you will use?
+
+## Error analysis 
+
+1. Sample-wise learning curves (to estimate how model can be improved by adding new data);
+2. Residual analysis (detecting bias and common errors); 
+3. Finding patterns in errors and residuals.
+4. Addressing the patterns (via adding new data, augmentations, model changes etc.)
+
 
 ## Further actions
 
